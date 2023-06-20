@@ -1,0 +1,98 @@
+﻿.ol-popup {
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    -moz-box-shadow: 0 1px 4px #000000;
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+   	padding-left:15px;
+	padding-bottom:15px;
+	padding-right:50px;
+    padding-top: 15px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    bottom: 12px;
+    left: -50px;
+
+}
+
+    .ol-popup:after, .ol-popup:before {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .ol-popup:after {
+        border-top-color: white;
+        border-width: 10px;
+        left: 48px;
+        margin-left: -10px;
+    }
+
+    .ol-popup:before {
+        border-top-color: black;
+        border-width: 11px;
+        left: 48px;
+        margin-left: -11px;
+    }
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+}
+
+    .ol-popup-closer:after {
+        content: "X";
+    }
+
+
+@media screen and (min-width:1650px) {
+    .appfrom-left {
+       padding-left: 1px
+    }
+    .appfrom-rigth {
+        padding-right: 5px
+
+    }
+}
+
+@media screen and (min-width:992px) {
+    .appfrom-left-1 {
+       padding-left: 1px
+    }
+    .appfrom-rigth-1 {
+        padding-right: 5px
+
+    }
+}
+
+
+.welld {
+ 
+  padding-top: 10px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+.welld blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, .15);
+}
+.welld-lg {
+  padding: 24px;
+  border-radius: 6px;
+}
+.welld-sm {
+  padding: 9px;
+  border-radius: 3px;
+}

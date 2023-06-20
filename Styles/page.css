@@ -1,0 +1,139 @@
+﻿
+.footer {
+    position:relative;
+    margin:20px auto 0;
+    padding:7px 0 9px;
+    border-top:1px solid #ddd
+}
+
+.footer .footer-bd p,.footer .footer-hd p {
+    padding-bottom:8px;
+    overflow:hidden;*zoom:1
+}
+
+.footer .footer-bd a,.footer .footer-hd a {
+    display:inline;float:left;margin:0 4px;white-space:nowrap;color:#6c6c6c
+}
+.footer .footer-bd a:hover,.footer .footer-hd a:hover {
+    color:#f40;text-decoration:none
+}
+.footer .footer-bd b,.footer .footer-hd b {
+    display:inline;float:left;margin:0 3px;font-weight:400;color:#ddd
+}
+
+.footer .footer-bd em,.footer .footer-bd span,.footer .footer-hd em,.footer .footer-hd span {
+    display:inline;float:left;white-space:nowrap;color:#9c9c9c
+}
+
+.footer .footer-bd em,.footer .footer-hd em {
+    margin-left:30px
+}
+
+.footer .footer-bd span,.footer .footer-hd span {
+    margin:0 4px
+}
+
+.footer .footer-bd span a,.footer .footer-hd span a {
+    float:none
+}
+
+.footer .footer-hd p {
+     margin-bottom:8px;line-height:27px;border-bottom:1px solid #ddd
+ }
+
+.footer .foot-ft {
+    display:none
+}
+
+#server-num {
+    color:#FFF;font-size:11px
+}
+
+.login-box-warp {
+    border:2px solid #dedede;
+   
+    /*border:1px solid #ff8c00;*/
+    padding:20px 30px 30px;
+    width:300px;
+    float:right;
+    margin-top: 90px;
+    margin-right: 40px;
+    -ms-border-radius: 10px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.83)
+}
+
+.login-bg {
+    position:absolute;overflow:hidden;top:60px;z-index:0
+}
+
+#page {
+    width:1190px;margin-left:auto;margin-right:auto
+}
+
+#resetPwd {
+      width:1190px;margin-left:auto;margin-right:auto
+}
+#logo {
+    padding:1px 0 0
+}
+
+#page .body {
+    margin-top:10px;position: relative;
+    background-image:  url('../Image/Fraport_Titel_2.jpg');
+    -ms-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 490px
+}
+
+#resetPwd .body {
+    margin-top:10px;position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 490px
+}
+
+@media screen and (max-width:1189px) {
+    #page {
+        width:990px;margin:0 auto
+    }
+    #resetPwd{
+        width:990px;margin:0 auto
+    }
+    .login-box-warp {
+        margin-right:70px!important
+    }
+}
+
+.abc {
+    width:350px;height:280px;float:left;display:inline;margin-left:170px
+}
+
+@media screen and (max-width:767px) {
+     #page {
+         width:auto;margin:0 auto
+     }
+     #resetPwd {
+         width:auto;margin:0 auto
+     }
+     #header {
+         border-bottom:1px solid #DEDEDE;text-align:center;text-indent:-110px
+     }
+     #logo {
+         height:35px;overflow:hidden
+     }
+     .abc,.footer,.login-bg,.login-extra {
+         display:none!important
+     }
+     .login-box-warp {
+         margin:0 auto!important;float:none;
+     }
+
+     #page .body {
+         margin-top:30px
+     }
+     #resetPwd .body {
+         margin-top:30px
+     }
+ }

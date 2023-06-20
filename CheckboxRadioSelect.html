@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="Styles\LTE\bootstrap\css\bootstrap.css">
+    <link rel="stylesheet" href="Styles\LTE\font-awesome\font-awesome.min.css">
+    <link rel="stylesheet" href="Styles\LTE\_all-skins.css">
+    <link rel="stylesheet" href="Styles\LTE\AdminLTE.css">
+    <link rel="stylesheet" href="Styles\toastr.css">
+    <link rel="stylesheet" href="Styles\panel.css">
+    <link rel="stylesheet" href="Scripts\simple-line-icons\simple-line-icons.css">
+    <link rel="stylesheet" href="Styles\datatables\dataTables.bootstrap.css">
+    <link rel="stylesheet" href="Styles\check\minimal.css">
+    <link rel="stylesheet" href="Styles\bootstrap-select.min.css">
+    <link rel="stylesheet" href="Styles\titatoggle-dist.css">
+
+    <script src="Scrip\jquery-3.5.1.min.js"></script>
+
+    <script src="Scripts\LTE\bootstrap.js"></script>
+    <script src="Scripts\PackingAjax.js"></script>
+    <script src="Scripts\CfgInfo.js"></script>
+    <script src="Scripts\LTE\app.js"></script>
+    <script src="Scripts\LTE\portlet-draggable.js"></script>
+    <script src="Scripts\LTE\jquery.slimscroll.js"></script>
+    <script src="Scripts\LTE\jquery.dataTables.min.js"></script>
+    <script src="Scripts\LTE\dataTables.bootstrap.js"></script>
+    <script src="Scripts\toastr.min.js"></script>
+    <script src="Scripts\validation\AlertInfo.js"></script>
+    <script src="Scripts\jquery.blockui.min.js"></script>
+    <script src="Scripts\icheck.js"></script>
+    <script src="Scripts\bootstrap-typeahead.js"></script>
+    <script src="Scripts\bootstrap-select.js"></script>
+    <script src="Scripts\TimeHelper\Transformation.js"></script>
+    <script src="Scripts\LTE\dataTables.buttons.min.js"></script>
+    <script src="Scripts\LTE\jszip.min.js"></script>
+    <script src="Scripts\LTE\buttons.html5.min.js"></script>
+    <script src="Scripts\LTE\buttons.print.min.js"></script>
+    <script src="Scripts\LTE\morris.min.js"></script>
+
+    <!-- ion.rangeSlider.min -->
+
+    <link href="Styles/PopupBox.css" rel="stylesheet" />
+    <link href="Styles/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link type="text/css" href="Styles/ol.css" rel="stylesheet" />
+    <link type="text/css" href="Styles/ion.rangeSlider.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/ol.js"></script>
+    <script type="text/javascript" src="Scripts/turf.min.js"></script>
+    <script type="text/javascript" src="Scripts/PackingMapDisplay.js"></script>
+    <script type="text/javascript" src="Scripts/DataHandler.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="Scripts/ion.rangeSlider.min.js"></script>
+    <script src="Scripts/csv/xlsx.full.min.js"></script>
+    <script src="Scripts/csv/xlsx.min.js"></script>
+    <script src="Scripts/csv/FileSaver.js"></script>
+    <script src="Scripts/LTE/Chart.js"></script>
+    <script src="Scripts/LTE/Chart.bundle.js"></script>
+
+
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="col-lgg-7 col-lg-7 col-md-7 col-sm-7" style="height:100%">
+        <div class="panel-group" role="tablist" aria-multiselectable="true" style="padding-left: 5px;">
+            <div class="panel panel-primary" style="border-color: #1C5E81;">
+                <div class="panel-heading" style="background-color: #1C5E81;" role="tab" id="">
+                    <h6 class="panel-title">
+                        Real Time Fleet Information
+                    </h6>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lgg-4 col-lg-4 col-md-4 col-sm-4" style="text-align:center">
+                        <h4>Ignition ON</h4>
+                        <span style="color:darkgrey">For real time data</span>
+                      
+                              
+                                            <div class="row" style='overflow: auto; margin-bottom: 10px;'>
+                                                <div style="width: 100%" id="piePDStatus">
+                                                </div>
+                                            </div>
+                                        
+                               
+                      
+                        
+                    </div>
+                    <div class="col-lgg-4 col-lg-4 col-md-4 col-sm-4" style="text-align:center">
+                        <h4>GPS Health</h4>
+                        <span style="color:darkgrey">Calibrated</span>
+                        <div class="row" style='overflow: auto; margin-bottom: 10px;'>
+                            <div style="width: 100%" id="piePDStatus2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lgg-4 col-lg-4 col-md-4 col-sm-4" style="text-align:center">
+                        <h4>For Hire Taxi </h4>
+                        <span style="color:darkgrey">Online Fleet</span>
+                        <div class="row" style='overflow: auto; margin-bottom: 10px;'>
+                            <div style="width: 100%" id="piePDStatus3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    
+<script>
+
+var count=2;
+var info =[1,0,1,9,2,6,7,8,5];
+var gps=3;
+var hired=2;
+
+
+$('#piePDStatus').append(' <canvas id="myChart3" height="270px"></canvas>');
+        var chartData = {
+            labels: [
+                "Ignition ON",
+                "Ignition Off"
+            ],
+            datasets: [
+                {
+                    label: 'My First Dataset',
+                    data: [count, info.length-count],
+                    backgroundColor: [
+                        'rgb(67 , 205 , 128)',
+                        'rgb(171, 164, 164)'
+                    ],
+                    hoverOffset: 1
+                 
+                }
+            ]
+        };
+        var ctx = document.getElementById("myChart3").getContext("2d");
+        piechart3 = new Chart(ctx, {
+            type: 'doughnut',
+            data: chartData,
+            option: {
+                hover: {
+                    animationDuration: 0 // duration of animations when hovering an item
+                },
+                responsiveAnimationDuration: 0, // animation duration after a resize
+                responsive: false,
+                legend: {
+                    position: 'top'
+                },
+                tooltips: {
+                    mode: false, //设置工具提示中显示的元素
+                    intersect: false,
+                    enabled: false //是否启用了画布上的工具提示？
+                },
+                animation: {
+                    duration: 0, // general animation time
+                    animateScale: false,
+                    animateRotate: false
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            gridLines: {
+                                display: true
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                display: false,
+                                beginAtZero: false
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+    
+    $('#piePDStatus2').append(' <canvas id="myChart1" height="270px"></canvas>');
+    var chartData = {
+        labels: [
+            "GPS Health",
+            "GPS Error"
+        ],
+        datasets: [
+            {
+                label: '',
+                data: [gps, info.length - gps],
+                backgroundColor: [
+                    'rgb(205, 149, 12)',
+                    'rgb(171, 164, 164)'
+                ],
+                hoverOffset: 1
+
+            }
+        ]
+    };
+    var ctx = document.getElementById("myChart1").getContext("2d");
+    piechart3 = new Chart(ctx, {
+        type: 'doughnut',
+        data: chartData,
+        option: {
+            hover: {
+                animationDuration: 0 // duration of animations when hovering an item
+            },
+            responsiveAnimationDuration: 0, // animation duration after a resize
+            responsive: false,
+            legend: {
+                position: 'top'
+            },
+            tooltips: {
+                mode: 'index', //设置工具提示中显示的元素
+                intersect: false,
+                enabled: false //是否启用了画布上的工具提示？
+            },
+            animation: {
+                duration: 0, // general animation time
+                animateScale: false,
+                animateRotate: false
+            },
+            scales: {
+                xAxes: [
+                    {
+                        gridLines: {
+                            display: false
+                        }
+                    }
+                ],
+                yAxes: [
+                    {
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false,
+                            beginAtZero: false
+                        }
+                    }
+                ]
+            }
+        }
+    });
+
+
+    $('#piePDStatus3').append(' <canvas id="myChart2" height="270px"></canvas>');
+    var chartData = {
+        labels: [
+          "Hired",
+          "For Hire"
+        ],
+        datasets: [
+            {
+                label: 'My First Dataset',
+                data: [hired, info.length - hired],
+                backgroundColor: [
+                    'rgb(105 , 139 , 34)',
+                    'rgb(171, 164, 164)'
+                ],
+                hoverOffset: 1
+
+            }
+        ]
+    };
+    var ctx = document.getElementById("myChart2").getContext("2d");
+    piechart3 = new Chart(ctx, {
+        type: 'doughnut',
+        data: chartData,
+        option: {
+            hover: {
+                animationDuration: 0 // duration of animations when hovering an item
+            },
+            responsiveAnimationDuration: 0, // animation duration after a resize
+            responsive: false,
+            legend: {
+                position: 'top'
+            },
+            tooltips: {
+                mode: 'index', //设置工具提示中显示的元素
+                intersect: false,
+                enabled: false //是否启用了画布上的工具提示？
+            },
+            animation: {
+                duration: 0, // general animation time
+                animateScale: false,
+                animateRotate: false
+            },
+            scales: {
+                xAxes: [
+                    {
+                        gridLines: {
+                            display: false
+                        }
+                    }
+                ],
+                yAxes: [
+                    {
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false,
+                            beginAtZero: false
+                        }
+                    }
+                ]
+            }
+        }
+    });
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
